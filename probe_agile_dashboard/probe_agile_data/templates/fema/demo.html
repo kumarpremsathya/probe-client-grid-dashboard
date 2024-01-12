@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Django Project</title>
+     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	{% comment %} <link rel="stylesheet" href="css/style.css" type="text/css"/> {% endcomment %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    <style>
+        .topnav {
+            overflow: hidden;
+            background-color:grey;
+          }
+
+          /* Add some basic styling for the links */
+          .topnav a {
+            float: left;
+            color: white;
+              text-decoration: none;
+              color: black;
+              padding: 5px;
+              font-size: 17px;
+              margin: 5px;
+              width: 20%;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+          }
+  
+          /* Add a class to highlight the clicked link */
+          .topnav .active-link {
+              background-color: green;
+              color: white;
+          }
+    </style>
+</head>
+<body>
+
+    <!-- Add the 'active-link' class to the first anchor tag by default -->
+    <div class="topnav">
+       <a href="{% url 'rbinewhome' %}" onclick="highlightLink(this)">Home</a>
+      <a href="{% url 'rbinewfema_datefilter' %}"  onclick="highlightLink(this)"> Market Data</a>
+      <a href="{% url 'rbinewecb_datefilter' %}"  onclick="highlightLink(this)" >About us</a>
+      <a href="{% url 'rbinewodi_datefilter' %}"  onclick="highlightLink(this)" >Contact</a>
+   </div>
+      
+
+
+   {% comment %} {% block content %}
+
+   {% endblock %} {% endcomment %}
+       
+   <script>
+    // Set the 'active-link' class to the first anchor tag initially
+    document.querySelector('.topnav a').classList.add('active-link');
+
+    function highlightLink(element) {
+        // Remove the 'active-link' class from all links
+        var links = document.querySelectorAll('.topnav a');
+        links.forEach(function(link) {
+            link.classList.remove('active-link');
+        });
+
+        // Add the 'active-link' class to the clicked link
+        element.classList.add('active-link');
+    }
+</script>
+</body>
+</html>
